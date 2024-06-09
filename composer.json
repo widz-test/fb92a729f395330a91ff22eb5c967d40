@@ -1,0 +1,38 @@
+{
+    "name": "levart/be-test",
+    "description": "Assement test for Levart",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Widya Septiawan",
+            "email": "widyamasseptiawan@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.10"
+    },
+    "require": {
+        "illuminate/database": "^8.83",
+        "league/oauth2-google": "^4.0",
+        "php-amqplib/php-amqplib": "^3.6",
+        "vlucas/phpdotenv": "^5.6",
+        "robmorgan/phinx": "^0.14.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Core\\": "core/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "scripts": {
+        "server:start": [
+            "php -S localhost:8000 server.php"
+        ],
+        "migration:create": "php vendor/bin/phinx create",
+        "migration:run": "php vendor/bin/phinx migrate -c ./config/phinx.php",
+        "migration:status": "php vendor/bin/phinx status",
+        "migration:rollback": "php vendor/bin/phinx rollback"
+    }
+}
