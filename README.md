@@ -1,6 +1,9 @@
-# Kledo BE Test
+# Levart BE Test
 
 services for assessment test in Levart
+
+# ERD & Flowchart
+https://drive.google.com/file/d/1uUjCwKRNhKfkCU9s4ebSVUYrtul8ZvaQ/view?usp=sharing
 
 ## Run Locally
 
@@ -44,4 +47,10 @@ services for assessment test in Levart
 
 ```bash
   curl http://localhost:8000
+```
+
+8. Run cron
+
+```bash
+  php cron/cron.php
 ```
