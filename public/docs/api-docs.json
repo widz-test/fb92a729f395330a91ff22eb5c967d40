@@ -1,0 +1,185 @@
+{
+	"openapi": "3.0.1",
+	"info": {
+	  "title": "Test",
+	  "description": "",
+	  "version": "1.0.0"
+	},
+	"tags": [
+	  {
+		"name": "Levart"
+	  }
+	],
+	"paths": {
+	  "/mail/send": {
+		"post": {
+		  "summary": "Send Mail",
+		  "x-apidog-folder": "Levart",
+		  "x-apidog-status": "developing",
+		  "deprecated": false,
+		  "description": "",
+		  "tags": [
+			"Levart"
+		  ],
+		  "parameters": [
+			{
+			  "name": "Authorization",
+			  "in": "header",
+			  "description": "",
+			  "required": true,
+			  "example": "Bearer {{token}}",
+			  "schema": {
+				"type": "string"
+			  }
+			}
+		  ],
+		  "requestBody": {
+			"content": {
+			  "application/json": {
+				"schema": {
+				  "type": "object",
+				  "properties": {
+					"sender": {
+					  "type": "string"
+					},
+					"receiver": {
+					  "type": "string"
+					},
+					"title": {
+					  "type": "string"
+					},
+					"message": {
+					  "type": "string"
+					}
+				  },
+				  "required": [
+					"sender",
+					"receiver",
+					"title",
+					"message"
+				  ],
+				  "x-apidog-ignore-properties": [],
+				  "x-apidog-orders": [
+					"sender",
+					"receiver",
+					"title",
+					"message"
+				  ]
+				},
+				"example": {
+				  "sender": "user1@levart.com",
+				  "receiver": "widyamasseptiawan@gmail.com",
+				  "title": "Title",
+				  "message": "Message"
+				}
+			  }
+			}
+		  },
+		  "responses": {
+			"200": {
+			  "description": "OK",
+			  "content": {
+				"application/json": {
+				  "schema": {
+					"type": "object",
+					"properties": {
+					  "status": {
+						"type": "boolean"
+					  },
+					  "message": {
+						"type": "string"
+					  },
+					  "data": {
+						"type": "object",
+						"properties": {
+						  "sender": {
+							"type": "string"
+						  },
+						  "receiver": {
+							"type": "string"
+						  },
+						  "title": {
+							"type": "string"
+						  },
+						  "message": {
+							"type": "string"
+						  },
+						  "status": {
+							"type": "string"
+						  },
+						  "sent_at": {
+							"type": "integer"
+						  },
+						  "exception": {
+							"type": "null"
+						  }
+						},
+						"required": [
+						  "sender",
+						  "receiver",
+						  "title",
+						  "message",
+						  "status",
+						  "sent_at",
+						  "exception"
+						],
+						"x-apidog-ignore-properties": [],
+						"x-apidog-orders": [
+						  "sender",
+						  "receiver",
+						  "title",
+						  "message",
+						  "status",
+						  "sent_at",
+						  "exception"
+						]
+					  }
+					},
+					"required": [
+					  "status",
+					  "message",
+					  "data"
+					],
+					"x-apidog-ignore-properties": [],
+					"x-apidog-orders": [
+					  "status",
+					  "message",
+					  "data"
+					]
+				  },
+				  "examples": {
+					"1": {
+					  "summary": "Success",
+					  "value": {
+						"status": true,
+						"message": "Success",
+						"data": {
+						  "sender": "user1@levart.com",
+						  "receiver": "widyamasseptiawan@gmail.com",
+						  "title": "Title",
+						  "message": "Message",
+						  "status": "processing",
+						  "sent_at": 0,
+						  "exception": null
+						}
+					  }
+					}
+				  }
+				}
+			  }
+			}
+		  },
+		  "x-run-in-apidog": "https://apidog.com/web/project/520001/apis/api-7854905-run"
+		}
+	  }
+	},
+	"components": {
+	  "schemas": {}
+	},
+	"servers": [
+	  {
+		"url": "",
+		"description": "Testing Env"
+	  }
+	]
+  }
