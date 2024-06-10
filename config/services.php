@@ -6,6 +6,8 @@ use Illuminate\Translation\Translator;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Container\Container;
 use App\Http\Controllers\MailController;
+use Core\Auth\Middleware\AuthMiddleware;
+use Core\Auth\Service\AuthGoogleService;
 use Core\Foundation\Queue\RabbitMQ;
 use Core\Foundation\Scheduler\Scheduler;
 use Core\Mail\Entity\Model\MailSent;
@@ -24,6 +26,12 @@ return [
 
         $container->singleton(ValidationFactory::class, function ($container) use ($validationFactory) {
             return $validationFactory;
+        });
+        $container->singleton(AuthGoogleService::class, function ($container) {
+            return new AuthGoogleService();
+        });
+        $container->singleton(AuthMiddleware::class, function ($container) {
+            return new AuthMiddleware($container->make(AuthGoogleService::class));
         });
         $container->singleton(RabbitMQ::class, function ($container) {
             return new RabbitMQ();
