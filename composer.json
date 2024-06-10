@@ -22,7 +22,9 @@
         "illuminate/routing": "^8.83",
         "illuminate/container": "^8.83",
         "illuminate/validation": "^8.83",
-        "illuminate/events": "^8.83"
+        "illuminate/events": "^8.83",
+        "phpmailer/phpmailer": "^6.9",
+        "dragonmantank/cron-expression": "^3.3"
     },
     "autoload": {
         "psr-4": {
@@ -34,7 +36,8 @@
     },
     "scripts": {
         "server:start": [
-            "php -S localhost:8000 server.php"
+            "php -S localhost:8000 server.php",
+            "php cron/cron.php"
         ],
         "migration:create": "php vendor/bin/phinx create",
         "migration:run": "php vendor/bin/phinx migrate -c ./config/phinx.php",

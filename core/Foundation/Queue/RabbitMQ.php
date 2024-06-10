@@ -64,4 +64,32 @@ class RabbitMQ {
         // Close connection
         $this->close();
     }
+
+    public function consume( 
+        string $queueName, 
+        \Closure $callback 
+    ) {
+        // Init connection
+        $this->connection();
+        // Init queue
+        $this->queue($queueName);
+        $fn = function ($msg) use($callback) {
+            try {
+                $callback($msg->getBody());
+            } catch(\Exception $e) {
+                error_log('Queue worker failed: ' . $e->getMessage());
+            }
+            $msg->ack();
+        };
+        $this->channel->basic_qos(null, 1, false);
+        $this->channel->basic_consume($queueName, '', false, false, false, false, $fn);
+        try {
+            // Consume data
+            $this->channel->consume();            
+        } catch (\Exception $e) {
+            error_log('Queue failed consume: ' . $e->getMessage());
+        }
+        // Close connection
+        $this->close();
+    }
 }

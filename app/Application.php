@@ -20,6 +20,6 @@ class Application {
 
     private function initDatabase() {
         $database = new Database(env('APP_ENV', 'development'), 0);
-        $database->init();   
+        $database->init();
     }
 }
