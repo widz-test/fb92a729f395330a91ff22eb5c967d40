@@ -14,8 +14,7 @@ final class MailSentMigration extends Database
             $table->string('message', 255);
             $table->enum('status', ['failed', 'processing', 'success'])->default('processing');
             $table->integer('sent_at')->unsigned()->default(0);
-            $table->string('exception', 255);
-            
+            $table->string('exception', 255)->nullable();
             $table->timestamps();
         });
     }
