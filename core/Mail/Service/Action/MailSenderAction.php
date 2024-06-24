@@ -27,8 +27,8 @@ class MailSenderAction extends BaseMailAction {
             }
             // Publish to queue
             $this->queue->publish(
-                array_merge($input, ['id' => $mailSent->id]), 
                 'email', 
+                array_merge($input, ['id' => $mailSent->id]), 
                 '', 
                 'email'
             );

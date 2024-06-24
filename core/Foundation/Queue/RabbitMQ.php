@@ -44,8 +44,8 @@ class RabbitMQ {
     }
 
     public function publish(
+        string $queueName,
         array $data = [], 
-        string $queueName, 
         string $exchangeName = '',
         string $routingKey = ''
     ) {
